@@ -1,0 +1,38 @@
+# Same as Black.
+line-length = 120
+indent-width = 4
+
+# Assume Python 3.9
+target-version = "py39"
+
+[lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+ignore = [
+    "B028",
+#    "F401",
+    "F811",
+#    "E402",
+    "E501",
+#    "E721",
+#    "E722",
+    "SIM102",
+    "SIM108",
+    "SIM210",
+    "RUF012",
+]
+
+[lint.pycodestyle]
+max-line-length = 120

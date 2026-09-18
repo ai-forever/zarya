@@ -1,0 +1,36 @@
+# Ignore test linting to avoid conflicting changes to version stability.
+exclude: ^(tests/testdata/|model-scratch/merges.txt|model-scratch/tokenizer.json|model-scratch/vocab.json)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+        args: [--assume-in-merge]
+      - id: check-symlinks
+      - id: check-yaml
+        args: ["--unsafe"]
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: no-commit-to-branch
+        always_run: false
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: fix-byte-order-marker
+        exclude: docs/CNAME
+      - id: mixed-line-ending
+        args: [--fix=lf]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.5
+    hooks:
+      # Run the linter.
+      - id: ruff
+        args:
+          - --fix
+        # Run the formatter.
+      - id: ruff-format
